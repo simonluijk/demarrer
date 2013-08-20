@@ -33,32 +33,33 @@ Deploy to staging/production (Heroku)
 * `fab setup_s3:bucket_name=demarrer-staging`
 * `fab setup_s3:bucket_name=demarrer-media`
 
-heroku create --remote staging --region eu demarrer-staging
-git config heroku.remote staging
-heroku config:set \
-    DJANGO_SECRET_KEY=??? \
-    DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
-    STATICFILES_STORAGE=apps.s3utils.StaticStorage \
-    AWS_ACCESS_KEY_ID=??? \
-    AWS_SECRET_ACCESS_KEY=??? \
-    AWS_STORAGE_BUCKET_NAME=demarrer-staging \
-    EMAIL_BACKEND=django_ses.SESBackend \
-    MEDIA_DOMAIN=???.cloudfront.net
 
-heroku run python manage.py syncdb --migrate
-git push staging master
+        heroku create --remote staging --region eu demarrer-staging
+        git config heroku.remote staging
+        heroku config:set \
+            DJANGO_SECRET_KEY=??? \
+            DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
+            STATICFILES_STORAGE=apps.s3utils.StaticStorage \
+            AWS_ACCESS_KEY_ID=??? \
+            AWS_SECRET_ACCESS_KEY=??? \
+            AWS_STORAGE_BUCKET_NAME=demarrer-staging \
+            EMAIL_BACKEND=django_ses.SESBackend \
+            MEDIA_DOMAIN=???.cloudfront.net
 
-heroku create --remote production --region eu demarrer-production
-heroku config:set \
-    DJANGO_SECRET_KEY=??? \
-    DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
-    STATICFILES_STORAGE=apps.s3utils.StaticStorage \
-    AWS_ACCESS_KEY_ID=??? \
-    AWS_SECRET_ACCESS_KEY=??? \
-    AWS_STORAGE_BUCKET_NAME=demarrer-media \
-    MEDIA_DOMAIN=???.cloudfront.net \
-    EMAIL_BACKEND=django_ses.SESBackend \
-    --remote production
+        heroku run python manage.py syncdb --migrate
+        git push staging master
 
-heroku run python manage.py syncdb --migrate --remote production
-git push production master
+        heroku create --remote production --region eu demarrer-production
+        heroku config:set \
+            DJANGO_SECRET_KEY=??? \
+            DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
+            STATICFILES_STORAGE=apps.s3utils.StaticStorage \
+            AWS_ACCESS_KEY_ID=??? \
+            AWS_SECRET_ACCESS_KEY=??? \
+            AWS_STORAGE_BUCKET_NAME=demarrer-media \
+            MEDIA_DOMAIN=???.cloudfront.net \
+            EMAIL_BACKEND=django_ses.SESBackend \
+            --remote production
+
+        heroku run python manage.py syncdb --migrate --remote production
+        git push production master
