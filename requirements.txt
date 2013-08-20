@@ -1,0 +1,51 @@
+## Core packages
+Django
+South
+psycopg2
+python-memcached
+python-dateutil
+dj-database-url
+
+## Hosting with Gunicorn
+gunicorn
+gevent
+
+## Common utils
+#django-extensions
+#django-mptt
+
+## Development
+#django-debug-toolbar
+
+## Continus deployment
+#django-waffle
+
+## AWS file storage
+boto
+django-storages
+
+## Static asset compression
+django_compressor
+
+## AWS SES (Simple email service)
+#django-ses
+#pydkim
+#dnspython
+
+## Time zones
+#django-timezones
+#pytz
+
+## Imaging
+#PIL
+#reportlab
+#sorl-thumbnail
+
+## Mailchimp
+#mailsnake
+#simplejson
+#requests
+
+## Restructured txt
+#docutils
+#Markdown
