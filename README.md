@@ -14,6 +14,7 @@ You need to update the following files.
 Start the test server with the following commands:
 
 * `vagrant up`
+* `cp env.example .env`
 * `foreman run python manage.py syncdb --migrate`
 * `foreman run python manage.py runserver`
 
