@@ -85,7 +85,7 @@ def freeze_requirements():
 
 
 @task
-def build_local_venv():
+def local_venv():
     """ Build local vitualenv """
     with lcd(PROJECT_ROOT):
         local('rm -rf "{0}"'.format(LOCAL_VENV))
