@@ -42,9 +42,7 @@
           {% block topbar %}
             <div class="col-sm-6">
               {% block topbar_left %}
-                <a href="{% url 'home' %}">
-                  <img src="{{ STATIC_URL }}img/logo.png" alt="{{ SITE_NAME }}" class="noborder">
-                </a>
+                <a href="{% url 'home' %}"><img src="{{ STATIC_URL }}img/logo.png" alt="{{ SITE_NAME }}" class="noborder"></a>
               {% endblock %}
             </div>
             <div class="col-sm-6 text-right">
