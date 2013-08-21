@@ -1,4 +1,4 @@
-<!doctype html>{% load i18n compress %}
+<!DOCTYPE html>{% load i18n compress %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
@@ -15,6 +15,13 @@
       <link rel="stylesheet" type="text/less" href="{{ STATIC_URL }}css/core.less">
       {% endcompress %}
     {% endif %}
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      {% compress js %}
+      <script src="{{ STATIC_URL }}bootstrap/assets/js/html5shiv.js"></script>
+      <script src="{{ STATIC_URL }}bootstrap/assets/js/respond.min.js"></script>
+      {% endcompress %}
+    <![endif]-->
     {% compress js %}
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
     <script src="{{ STATIC_URL }}js/google-analytics.js"></script>
@@ -30,44 +37,44 @@
   <body>
     {% block top %}{% endblock %}
     {% block topbar_base %}
-      <div class="container-fluid">
-        <div class="row-fluid">
+      <div class="container">
+        <div class="row">
           {% block topbar %}
-            <div class="span6">
+            <div class="col-sm-6">
               {% block topbar_left %}
                 <a href="{% url 'home' %}">
                   <img src="{{ STATIC_URL }}img/logo.png" alt="{{ SITE_NAME }}" class="noborder">
                 </a>
               {% endblock %}
             </div>
-            <div class="span6 text-right">
+            <div class="col-sm-6 text-right">
               {% block topbar_right %}{% endblock %}
             </div>
           {% endblock %}
         </div>
       </div>
     {% endblock %}
-    <div class="container-fluid">
+    <div class="container">
       {% if messages %}
-        <div class="row-fluid">
-          <div class="span12">
+        <div class="row">
+          <div class="col-sm-12">
             {% include "includes/messages.html" %}
           </div>
         </div>
       {% endif %}
-      <div class="row-fluid">
-        <div class="span3">
+      <div class="row">
+        <div class="col-sm-3">
           {% block sidebar %}{% endblock %}
           {% include "includes/social_buttons.html" %}
         </div>
-        <div class="span9 just">
+        <div class="col-sm-9 just">
           {% block body %}{% endblock %}
         </div>
       </div>
     </div>
-    <div class="container-fluid">
-      <div class="row-fluid">
-        <div class="span12 text-center">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 text-center">
           <p>Copyright &copy; 2013 {{ SITE_NAME }}, All rights reserved.</p>
         </div>
       </div>
