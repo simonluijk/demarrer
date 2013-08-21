@@ -24,6 +24,8 @@
     <![endif]-->
     {% compress js %}
     <script src="{{ STATIC_URL }}js/jquery.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/dropdown.js"></script>
+    <script src="{{ STATIC_URL }}bootstrap/js/collapse.js"></script>
     <script src="{{ STATIC_URL }}js/google-analytics.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
     {% endcompress %}
@@ -50,6 +52,11 @@
               {% block topbar_right %}{% endblock %}
             </div>
           {% endblock %}
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            {% include "includes/nav_bar.html" %}
+          </div>
         </div>
       </div>
     {% endblock %}
