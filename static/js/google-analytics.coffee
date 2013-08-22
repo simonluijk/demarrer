@@ -35,7 +35,7 @@ Anly:: =
     @trackEvent category, "click", href
     window.setTimeout (->
       document.location = href
-      null
+      undefined
     ), 200
 
   trackOutgoing: (event) ->

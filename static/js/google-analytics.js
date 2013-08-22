@@ -41,7 +41,7 @@
       this.trackEvent(category, "click", href);
       return window.setTimeout((function() {
         document.location = href;
-        return null;
+        return void 0;
       }), 200);
     },
     trackOutgoing: function(event) {
