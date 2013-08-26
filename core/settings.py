@@ -129,6 +129,12 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
 
+CACHES = {
+    'default': {
+        'BACKEND': os.environ.get('DEFAULT_CACHE_BACKED',
+                   'django.core.cache.backends.locmem.LocMemCache'),
+    },
+}
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
