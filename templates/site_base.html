@@ -61,12 +61,12 @@
         </div>
       {% endif %}
       <div class="row">
+        <div class="col-sm-9 just">
+          {% block body %}{% endblock %}
+        </div>
         <div class="col-sm-3">
           {% block sidebar %}{% endblock %}
           {% include "includes/social_buttons.html" %}
-        </div>
-        <div class="col-sm-9 just">
-          {% block body %}{% endblock %}
         </div>
       </div>
     </div>
