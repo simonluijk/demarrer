@@ -131,7 +131,7 @@ EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
 
 CACHES = {
     'default': {
-        'BACKEND': os.environ.get('DEFAULT_CACHE_BACKED',
+        'BACKEND': os.environ.get('DEFAULT_CACHE_BACKEND',
                    'django.core.cache.backends.locmem.LocMemCache'),
     },
 }
