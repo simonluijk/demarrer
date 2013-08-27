@@ -39,6 +39,8 @@ django_compressor
 ## Imaging
 #Pillow
 #reportlab
+#django-imagekit
+#pilkit
 #sorl-thumbnail
 
 ## Mailchimp
