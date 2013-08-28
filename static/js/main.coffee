@@ -1,20 +1,20 @@
 window.APP = window.APP or {}
 
 anly = new Anly(
-  account: "UA-XXXX-1"
-  outIgnoreDomains: ["XXX.cloudfront.net"]
+    account: "UA-XXXX-1"
+    outIgnoreDomains: ["XXX.cloudfront.net"]
 )
 
 APP.Main = ->
-  $(document).ready ->
-    anly.trackPageview()
-    $("a").click (event) ->
-      anly.trackOutgoing event
-      anly.trackDownload event
+    $(document).ready ->
+        anly.trackPageview()
 
-    if typeof DEBUG is "undefined"
-      $(window).load ->
-        Anly.loadScript()
+        $("a").click (event) ->
+            anly.trackOutgoing event
+            anly.trackDownload event
 
-    else
-      console.log _gaq
+        if typeof DEBUG is "undefined"
+            $(window).load ->
+                Anly.loadScript()
+        else
+            console.log _gaq
