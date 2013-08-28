@@ -22,7 +22,7 @@
     s = document.getElementsByTagName("script")[0];
     g.async = true;
     prefix = ("https:" === location.protocol ? "https://ssl" : "http://www");
-    g.src(prefix + ".google-analytics.com/ga.js");
+    g.src = prefix + ".google-analytics.com/ga.js";
     return s.parentNode.insertBefore(g, s);
   };
 

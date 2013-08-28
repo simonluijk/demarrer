@@ -16,7 +16,7 @@ Anly.loadScript = ->
     s = document.getElementsByTagName("script")[0]
     g.async = true
     prefix = (if "https:" is location.protocol then "https://ssl" else "http://www")
-    g.src prefix + ".google-analytics.com/ga.js"
+    g.src = prefix + ".google-analytics.com/ga.js"
     s.parentNode.insertBefore g, s
 
 
