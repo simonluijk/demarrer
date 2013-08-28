@@ -10,20 +10,22 @@
   });
 
   APP.Main = function() {
-    return $(document).ready(function() {
+    $(document).ready(function() {
       anly.trackPageview();
       $("a").click(function(event) {
         anly.trackOutgoing(event);
         return anly.trackDownload(event);
       });
       if (typeof DEBUG === "undefined") {
-        return $(window).load(function() {
+        $(window).load(function() {
           return Anly.loadScript();
         });
       } else {
-        return console.log(_gaq);
+        console.log(_gaq);
       }
+      return void 0;
     });
+    return void 0;
   };
 
 }).call(this);

@@ -18,3 +18,7 @@ APP.Main = ->
                 Anly.loadScript()
         else
             console.log _gaq
+
+        undefined
+
+    undefined
