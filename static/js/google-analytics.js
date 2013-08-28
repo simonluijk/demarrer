@@ -18,8 +18,8 @@
 
   Anly.loadScript = function() {
     var g, prefix, s;
-    g = document.createElement("script");
     s = document.getElementsByTagName("script")[0];
+    g = document.createElement("script");
     g.async = true;
     prefix = ("https:" === location.protocol ? "https://ssl" : "http://www");
     g.src = prefix + ".google-analytics.com/ga.js";

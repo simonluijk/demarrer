@@ -6,6 +6,8 @@ anly = new Anly(
 )
 
 APP.Main = ->
+    window.DEBUG = typeof DEBUG is 'boolean' and DEBUG is true
+
     $(document).ready ->
         anly.trackPageview()
 
@@ -13,7 +15,7 @@ APP.Main = ->
             anly.trackOutgoing event
             anly.trackDownload event
 
-        if typeof DEBUG is "undefined"
+        if not DEBUG
             $(window).load ->
                 Anly.loadScript()
         else

@@ -10,13 +10,14 @@
   });
 
   APP.Main = function() {
+    window.DEBUG = typeof DEBUG === 'boolean' && DEBUG === true;
     $(document).ready(function() {
       anly.trackPageview();
       $("a").click(function(event) {
         anly.trackOutgoing(event);
         return anly.trackDownload(event);
       });
-      if (typeof DEBUG === "undefined") {
+      if (!DEBUG) {
         $(window).load(function() {
           return Anly.loadScript();
         });

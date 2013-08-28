@@ -12,8 +12,8 @@ window.Anly = (opt) ->
 
 
 Anly.loadScript = ->
-    g = document.createElement("script")
     s = document.getElementsByTagName("script")[0]
+    g = document.createElement("script")
     g.async = true
     prefix = (if "https:" is location.protocol then "https://ssl" else "http://www")
     g.src = prefix + ".google-analytics.com/ga.js"
