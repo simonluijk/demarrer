@@ -144,6 +144,9 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    # Uncomment the next line for django_toolbar
+    #'debug_toolbar.middleware.DebugToolbarMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -196,7 +199,14 @@ INSTALLED_APPS = (
 
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
+
+    # Uncomment the next line for django_toolbar
+    #'debug_toolbar',
 )
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
