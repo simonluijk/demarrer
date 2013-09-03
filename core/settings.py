@@ -166,6 +166,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.static',
     'django.core.context_processors.debug',
     'apps.context_processors.sites',
+    'apps.context_processors.bootstrap3',
 )
 
 ROOT_URLCONF = 'core.urls'

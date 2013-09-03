@@ -13,6 +13,7 @@ gevent
 ## Common utils
 #django-extensions
 #django-mptt
+django-crispy-forms
 
 ## Development
 #django-debug-toolbar
