@@ -47,7 +47,9 @@
         </div>
         <div class="row">
           <div class="col-sm-12">
-            {% include "includes/nav_bar.html" %}
+            {% block navbar %}
+              {% include "includes/nav_bar.html" %}
+            {% endblock %}
           </div>
         </div>
       </div>
