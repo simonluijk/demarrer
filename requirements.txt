@@ -30,7 +30,7 @@ django-storages
 django_compressor
 
 ## AWS SES (Simple email service)
-#django-ses
+django-ses
 #pydkim
 #dnspython
 
