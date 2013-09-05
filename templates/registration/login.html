@@ -3,17 +3,20 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}Login{% endblock %}
+{% block head_title %}{% trans "Login" %}{% endblock %}
 
 {% block body %}
   <h2>{% trans 'Login' %}</h2>
-  <form method="post" action="{% url 'auth:login' %}" class="form-horizontal">
+  <form method="post" action="{% url 'auth_login' %}" class="form-horizontal">
     <input type="hidden" name="next" value="{{ next }}">
     {% csrf_token %}
     {% crispy form crispy_horizontal %}
     <div class="form-group">
-      <div class="col-lg-offset-4 col-lg-10">
+      <div class="col-lg-offset-4 col-lg-4">
         <button type="submit" class="btn btn-primary">{% trans 'Login' %}</button>
+      </div>
+      <div class="col-lg-4 text-right">
+        <a href="{% url 'auth_password_reset' %}">{% trans "Forgotten password?" %}</a>
       </div>
     </div>
   </form>

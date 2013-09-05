@@ -44,7 +44,7 @@
         </ul>
       </li>
       {% if user.is_authenticated %}
-        <li><a href="{% url 'auth:logout' %}">{% trans "Logout" %}</a></li>
+        <li><a href="{% url 'auth_logout' %}">{% trans "Logout" %}</a></li>
       {% endif %}
     </ul>
   </div>

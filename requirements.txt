@@ -11,9 +11,10 @@ gunicorn
 gevent
 
 ## Common utils
+django-registration
+django-crispy-forms
 #django-extensions
 #django-mptt
-django-crispy-forms
 
 ## Development
 #django-debug-toolbar
