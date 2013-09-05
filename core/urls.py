@@ -8,6 +8,12 @@ from django.views.generic import TemplateView
 # admin.autodiscover()
 
 
+auth_patterns = patterns('django.contrib.auth.views',
+    url(r'^login/$', 'login', name='login'),
+    url(r'^logout/$', 'logout_then_login', name='logout'),
+)
+
+
 urlpatterns = []
 if settings.DEBUG:
     urlpatterns += patterns('',
@@ -20,6 +26,8 @@ if settings.DEBUG:
 urlpatterns += patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'),
         name='home'),
+
+    url(r'^accounts/', include(auth_patterns, 'auth')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),

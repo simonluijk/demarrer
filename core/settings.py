@@ -195,6 +195,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'south',
     'compressor',
+    'crispy_forms',
 
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
@@ -205,6 +206,8 @@ INSTALLED_APPS = (
     # Uncomment the next line for django_toolbar
     #'debug_toolbar',
 )
+
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': False,
