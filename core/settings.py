@@ -27,8 +27,8 @@ DATABASES = {'default': dj_database_url.config()}
 TIME_ZONE = 'America/Chicago'
 
 LANGUAGES = (
-    ('en', 'English'),
-#    ('fr', 'Français'),
+    ('en', u'English'),
+#    ('fr', u'Français'),
 )
 
 # Language code for this installation. All choices can be found here:
