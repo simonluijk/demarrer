@@ -3,7 +3,7 @@
 home=`pwd`
 
 cd static/js
-coffee -cmw *.coffee &
+coffee -cmw $home/static &
 
 cd $home
 less_file="static/css/core.less";
