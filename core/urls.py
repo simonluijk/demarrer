@@ -7,7 +7,17 @@ from django.views.generic import TemplateView
 # from django.contrib import admin
 # admin.autodiscover()
 
-urlpatterns = patterns('',
+
+urlpatterns = []
+if settings.DEBUG:
+    urlpatterns += patterns('',
+        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
+            'document_root': settings.MEDIA_ROOT
+        })
+    )
+
+
+urlpatterns += patterns('',
     url(r'^$', TemplateView.as_view(template_name='index.html'),
         name='home'),
 
@@ -25,10 +35,3 @@ urlpatterns = patterns('',
     #     TemplateView.as_view(template_name='google-verify.html',
     #                          content_type="text/plain"))
 )
-
-if settings.DEBUG:
-    urlpatterns += patterns('',
-        (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-            'document_root': settings.MEDIA_ROOT
-        })
-    )
