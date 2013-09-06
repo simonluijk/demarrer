@@ -33,7 +33,7 @@ LANGUAGES = (
 
 # Language code for this installation. All choices can be found here:
 # http://www.i18nguy.com/unicode/language-identifiers.html
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = LANGUAGES[0][0]
 
 SITE_ID = 1
 
