@@ -45,10 +45,12 @@ Deploy to staging/production (Heroku)
             AWS_SECRET_ACCESS_KEY=??? \
             AWS_STORAGE_BUCKET_NAME=demarrer-staging \
             EMAIL_BACKEND=django_ses.SESBackend \
-            MEDIA_DOMAIN=???.cloudfront.net
+            MEDIA_DOMAIN=???.cloudfront.net \
+            ALLOWED_HOSTS=demarrer-staging.herokuapp.com
 
-        heroku run python manage.py syncdb --migrate
         git push staging master
+        heroku run python manage.py syncdb --migrate
+        heroku run python manage.py compress
 
         heroku create --remote production --region eu demarrer-production
         heroku config:set \
@@ -58,9 +60,11 @@ Deploy to staging/production (Heroku)
             AWS_ACCESS_KEY_ID=??? \
             AWS_SECRET_ACCESS_KEY=??? \
             AWS_STORAGE_BUCKET_NAME=demarrer-media \
-            MEDIA_DOMAIN=???.cloudfront.net \
             EMAIL_BACKEND=django_ses.SESBackend \
+            MEDIA_DOMAIN=???.cloudfront.net \
+            ALLOWED_HOSTS=demarrer.com \
             --remote production
 
-        heroku run python manage.py syncdb --migrate --remote production
         git push production master
+        heroku run python manage.py syncdb --migrate --remote production
+        heroku run python manage.py compress --remote production
