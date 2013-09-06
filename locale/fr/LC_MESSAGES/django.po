@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-09-06 16:09+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: templates/site_base.html:79
+msgid "Copyright"
+msgstr "Droits d'auteur"
+
+#: templates/site_base.html:80
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+#: templates/includes/nav_bar.html:6
+msgid "Toggle navigation"
+msgstr "Basculer la navigation"
+
+#: templates/includes/nav_bar.html:47
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: templates/registration/login.html:6 templates/registration/login.html:9
+#: templates/registration/login.html:24
+#: templates/registration/registration_form.html:16
+msgid "Login"
+msgstr "Connexion"
+
+#: templates/registration/login.html:16
+msgid "Don't have an account?"
+msgstr "Vous n'avez pas de compte?"
+
+#: templates/registration/login.html:17
+#: templates/registration/registration_form.html:6
+#: templates/registration/registration_form.html:9
+#: templates/registration/registration_form.html:23
+msgid "Register"
+msgstr "Inscrivez-vous"
+
+#: templates/registration/login.html:27
+msgid "Forgotten password?"
+msgstr "Mot de passe oublié?"
+
+#: templates/registration/logout.html:5 templates/registration/logout.html:8
+msgid "Logged out"
+msgstr "Déconnecté"
+
+#: templates/registration/logout.html:9
+msgid "You have been logged out successfully."
+msgstr "Vous avez été connecté avec succès."
+
+#: templates/registration/password_change_done.html:5
+msgid "Password changed"
+msgstr "Mot de passe modifié"
+
+#: templates/registration/password_change_done.html:8
+msgid "Password changed successfully"
+msgstr "Mot de passe changé avec succès"
+
+#: templates/registration/password_change_done.html:9
+msgid "Your password was changed successfully."
+msgstr "Votre mot de passe a été changé avec succès."
+
+#: templates/registration/password_change_form.html:6
+#: templates/registration/password_change_form.html:9
+#: templates/registration/password_change_form.html:15
+msgid "Change password"
+msgstr "Changer mot de passe"
+
+#: templates/registration/password_reset_complete.html:5
+#: templates/registration/password_reset_done.html:5
+msgid "Password reset"
+msgstr "Mot de passe réinitialisé"
+
+#: templates/registration/password_reset_complete.html:8
+msgid "Password reset successfully"
+msgstr "Mot de passe réinitialisé avec succès"
+
+#: templates/registration/password_reset_complete.html:9
+msgid "Your password was reset successfully."
+msgstr "Votre mot de passe a été réinitialisé avec succès."
+
+#: templates/registration/password_reset_complete.html:11
+#, python-format
+msgid "You may now <a href=\"%(login_url)s\">Login</a>"
+msgstr "Vous pouvez maintenant vous <a href=\"%(login_url)s\">connecter</a>"
+
+#: templates/registration/password_reset_confirm.html:6
+#: templates/registration/password_reset_confirm.html:9
+#: templates/registration/password_reset_confirm.html:15
+msgid "Create new password"
+msgstr "Créer un nouveau mot de passe"
+
+#: templates/registration/password_reset_done.html:8
+msgid "Password reset email sent"
+msgstr "Mot de passe réinitialisé courriel envoyé"
+
+#: templates/registration/password_reset_done.html:9
+msgid ""
+"An email with a reset link has been emailed to the address attached to your "
+"account."
+msgstr ""
+"Un email avec un lien de réinitialisation a été envoyé par courriel à "
+"l'adresse jointe à votre compte."
+
+#: templates/registration/password_reset_email.html:1
+#, python-format
+msgid ""
+"Hi %(user.get_full_name)s,\n"
+"\n"
+"Someone asked for a password reset for your account %(email)s on "
+"%(site_name)s. If this was you, follow the link below to create a new "
+"password:\n"
+"\n"
+"%(protocol)s://%(domain)s%(confirm_url)s"
+msgstr ""
+"Bonjour %(user.get_full_name)s,\n"
+"\n"
+"Quelqu'un a demandé une réinitialisation du mot de passe pour vos comptes "
+"%(email)s sur %(site_name)s. Si c'était vous, suivez le lien ci-dessous pour "
+"créer un nouveau mot de passe:\n"
+"%(protocol)s://%(domain)s%(confirm_url)s"
+
+#: templates/registration/password_reset_form.html:6
+#: templates/registration/password_reset_form.html:9
+#: templates/registration/password_reset_form.html:15
+msgid "Reset password"
+msgstr "Réinitialiser le mot de passe"
+
+#: templates/registration/registration_form.html:15
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte?"

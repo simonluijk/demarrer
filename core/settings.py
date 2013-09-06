@@ -186,6 +186,10 @@ FIXTURE_DIRS = (
     os.path.join(PROJECT_PATH, 'fixtures'),
 )
 
+LOCALE_PATHS = (
+    os.path.join(PROJECT_PATH, 'locale'),
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
