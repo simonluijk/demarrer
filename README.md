@@ -1,7 +1,9 @@
 Demarrer
 ========
 
-Demarrer is a Django project template.
+Demarrer is a Django project template that follows [the 12-factor app][1] methodology as closely as possible. Namily it tries to be hosting environment agnostic. 
+
+[1]: http://12factor.net
 
 Setup local development
 -----------------------
