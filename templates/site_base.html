@@ -1,4 +1,4 @@
-<!DOCTYPE html>{% load i18n compress %}
+<!DOCTYPE html>{% load i18n %}
 <html lang="{{ LANGUAGE_CODE }}">
   <head>
     <meta charset="utf-8">
@@ -10,17 +10,13 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}css/core.min.css">
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-      {% compress js %}
       <script src="{{ STATIC_URL }}lib/bootstrap/assets/js/html5shiv.js"></script>
       <script src="{{ STATIC_URL }}lib/bootstrap/assets/js/respond.min.js"></script>
-      {% endcompress %}
     <![endif]-->
-    {% compress js %}
     <script src="{{ STATIC_URL }}lib/jquery/jquery.min.js"></script>
     <script src="{{ STATIC_URL }}lib/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="{{ STATIC_URL }}js/google-analytics.js"></script>
     <script src="{{ STATIC_URL }}js/main.js"></script>
-    {% endcompress %}
     <script type="text/javascript">
       {% if user.is_authenticated and user.is_staff or debug %}var DEBUG = true;{% endif %}
       var LANGUAGE_CODE = '{{ LANGUAGE_CODE }}';
