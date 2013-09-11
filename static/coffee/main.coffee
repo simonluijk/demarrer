@@ -1,11 +1,11 @@
-window.APP = window.APP or {}
+Anly = require('./google-analytics.coffee')
 
 anly = new Anly(
     account: "UA-XXXX-1"
     outIgnoreDomains: ["XXX.cloudfront.net"]
 )
 
-APP.Main = ->
+Main = ->
     window.DEBUG = typeof DEBUG is 'boolean' and DEBUG is true
 
     $(document).ready ->
@@ -20,7 +20,3 @@ APP.Main = ->
                 Anly.loadScript()
         else
             console.log _gaq
-
-        undefined
-
-    undefined

@@ -1,6 +1,6 @@
 window._gaq = window._gaq or []
 
-window.Anly = (opt) ->
+Anly = (opt) ->
     @settings =
         outIgnoreDomains: []
         downloadFileTypes: ["doc", "xls", "pdf", "mp3"]
