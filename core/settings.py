@@ -81,7 +81,6 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #    'django.contrib.staticfiles.finders.DefaultStorageFinder',
-    'compressor.finders.CompressorFinder',
 )
 
 try:
@@ -91,21 +90,8 @@ except KeyError:
 
 try:
     STATICFILES_STORAGE = os.environ['STATICFILES_STORAGE']
-    COMPRESS_STORAGE = STATICFILES_STORAGE
 except KeyError:
     pass
-
-COMPRESS_OFFLINE = True
-COMPRESS_CSS_FILTERS = (
-    'compressor.filters.css_default.CssAbsoluteFilter',
-    'compressor.filters.cssmin.CSSMinFilter',
-)
-COMPRESS_JS_FILTERS = (
-    'compressor.filters.jsmin.JSMinFilter',
-)
-COMPRESS_PRECOMPILERS = (
-   ('text/less', 'lessc {infile}'),
-)
 
 AWS_S3_SECURE_URLS = False
 AWS_QUERYSTRING_AUTH = False
@@ -198,7 +184,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'compressor',
     'registration',
     'crispy_forms',
 

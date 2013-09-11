@@ -26,9 +26,6 @@ django-crispy-forms
 boto
 django-storages
 
-## Static asset compression
-django_compressor
-
 ## AWS SES (Simple email service)
 django-ses
 #pydkim
