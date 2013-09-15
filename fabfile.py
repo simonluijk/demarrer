@@ -1,5 +1,7 @@
 #-*- coding:utf-8 -*-
 import os
+import re
+
 from fabric.api import lcd, local, task
 from fabric.api import hide
 from fabtools.python import virtualenv as _virtualenv
@@ -93,3 +95,23 @@ def local_venv():
             LOCAL_VENV))
         with _virtualenv(LOCAL_VENV, local=True):
             local('pip install -r requirements.txt')
+
+
+VM_RE = re.compile(r'"([^"]+)"\s\{([^\}]+)\}')
+
+@task
+def set_vagrant_id():
+    """ Set vagrant machine id if already created. """
+    new_vm_id = None
+    vms = local('vboxmanage list vms', capture=True)
+    match = VM_RE.findall(vms)
+    if match:
+        for vm_name, vm_id  in match:
+            if vm_name.startswith('{0}_default_'.format(PROJECT_NAME)):
+                new_vm_id = vm_id
+
+    if new_vm_id:
+        with lcd(PROJECT_ROOT):
+            directory = '.vagrant/machines/default/virtualbox'
+            local('mkdir -p {0}'.format(directory))
+            local('echo "{0}" > {1}/id'.format(new_vm_id, directory))
