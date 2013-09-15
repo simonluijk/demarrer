@@ -1,11 +1,11 @@
-Anly = require('./google-analytics.coffee')
+window.APP = window.APP || {}
 
 anly = new Anly(
     account: "UA-XXXX-1"
     outIgnoreDomains: ["XXX.cloudfront.net"]
 )
 
-Main = ->
+APP.Main = ->
     window.DEBUG = typeof DEBUG is 'boolean' and DEBUG is true
 
     $(document).ready ->

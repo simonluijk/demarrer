@@ -1,0 +1,14 @@
+{
+  "name": "demarrer",
+  "version": "1.0.0",
+  "authors": [
+    "Simon Luijk <simon@simonluijk.com>"
+  ],
+  "description": "Django static template",
+  "main": "main",
+  "private": true,
+  "dependencies": {
+    "jquery": "~1.10",
+    "bootstrap": "~3.0"
+  }
+}
