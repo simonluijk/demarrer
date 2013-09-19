@@ -43,9 +43,7 @@ django-ses
 #sorl-thumbnail
 
 ## Mailchimp
-#mailsnake
-#simplejson
-#requests
+#django-chimps
 
 ## Restructured txt
 #django-markdown-deux

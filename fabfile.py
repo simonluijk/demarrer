@@ -1,12 +1,10 @@
 #-*- coding:utf-8 -*-
 import os
 import re
-
-from fabric.api import lcd, local, task
-from fabric.api import hide
-from fabtools.python import virtualenv as _virtualenv
-
 import boto
+
+from fabric.api import lcd, local, task, hide, prefix
+from contextlib import contextmanager
 from boto.s3.connection import Location as _Location
 from boto.exception import S3CreateError as _S3CreateError
 from boto.cloudfront.origin import CustomOrigin as _CustomOrigin
@@ -51,6 +49,13 @@ def setup_s3(bucket_name=None):
         print 'MEDIA_DOMAIN={0}'.format(bucket_url)
 
 
+@contextmanager
+def virtualenv(virtualenv, local=False):
+    activate_path = os.path.join(virtualenv, 'bin', 'activate')
+    with prefix('source "{0}"'.format(activate_path)):
+        yield
+
+
 @task
 def freeze_requirements():
     """ Freeze python requirements into requirements file """
@@ -58,7 +63,7 @@ def freeze_requirements():
         requirements = open('requirements.txt', 'r').read().split('\n')
         if len(requirements[-1]) == 0:
             requirements.pop()
-        with _virtualenv(LOCAL_VENV, local=True):
+        with virtualenv(LOCAL_VENV, local=True):
             with hide('running'):
                 packages = local('pip freeze --local', capture=True)
                 packages = packages.split('\n')
@@ -91,13 +96,14 @@ def local_venv():
     """ Build local vitualenv """
     with lcd(PROJECT_ROOT):
         local('rm -rf "{0}"'.format(LOCAL_VENV))
-        local('virtualenv "{0}" -p python2 --distribute --no-site-packages'.format(
+        local('virtualenv "{0}" -p python2 --no-site-packages'.format(
             LOCAL_VENV))
-        with _virtualenv(LOCAL_VENV, local=True):
+        with virtualenv(LOCAL_VENV, local=True):
             local('pip install -r requirements.txt')
 
 
 VM_RE = re.compile(r'"([^"]+)"\s\{([^\}]+)\}')
+
 
 @task
 def set_vagrant_id():
@@ -106,7 +112,7 @@ def set_vagrant_id():
     vms = local('vboxmanage list vms', capture=True)
     match = VM_RE.findall(vms)
     if match:
-        for vm_name, vm_id  in match:
+        for vm_name, vm_id in match:
             if vm_name.startswith('{0}_default_'.format(PROJECT_NAME)):
                 new_vm_id = vm_id
 
