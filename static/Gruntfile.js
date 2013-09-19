@@ -48,7 +48,8 @@ module.exports = function(grunt) {
     less: {
       dist: {
         options: {
-          compress: true
+          compress: true,
+          relativeUrls: true
         },
         files: {
           'dist/main.min.css': 'less/main.less'
