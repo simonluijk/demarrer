@@ -38,6 +38,7 @@ Deploy to staging/production (Heroku)
 
 
         heroku create --remote staging --region eu demarrer-staging
+        heroku labs:enable user-env-compile
         git config heroku.remote staging
         heroku config:set \
             DJANGO_SECRET_KEY=??? \
@@ -54,6 +55,7 @@ Deploy to staging/production (Heroku)
         heroku run python manage.py syncdb --migrate
 
         heroku create --remote production --region eu demarrer-production
+        heroku labs:enable user-env-compile --remote production
         heroku config:set \
             DJANGO_SECRET_KEY=??? \
             DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
