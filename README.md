@@ -37,9 +37,15 @@ Deploy to staging/production (Heroku)
 * `fab setup_s3:bucket_name=demarrer-media`
 
 
+Setup staging...
+
         heroku create --remote staging --region eu demarrer-staging
-        heroku labs:enable user-env-compile
         git config heroku.remote staging
+
+        heroku labs:enable user-env-compile
+        heroku addons:add pgbackups
+        heroku addons:add memcachier:dev
+
         heroku config:set \
             DJANGO_SECRET_KEY=??? \
             DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
@@ -54,8 +60,15 @@ Deploy to staging/production (Heroku)
         git push staging master
         heroku run python manage.py syncdb --migrate
 
+Now production...
+
         heroku create --remote production --region eu demarrer-production
+
         heroku labs:enable user-env-compile --remote production
+        heroku addons:add pgbackups --remote production
+        heroku addons:add memcachier:dev --remote production
+        heroku domains:add www.demarrer.com --remote production
+
         heroku config:set \
             DJANGO_SECRET_KEY=??? \
             DEFAULT_FILE_STORAGE=apps.s3utils.MediaStorage \
@@ -70,7 +83,3 @@ Deploy to staging/production (Heroku)
 
         git push production master
         heroku run python manage.py syncdb --migrate --remote production
-
-        heroku addons:add pgbackups --remote production
-        heroku addons:add memcachier:dev --remote production
-        heroku domains:add www.demarrer.com --remote production
