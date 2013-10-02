@@ -52,7 +52,6 @@ Deploy to staging/production (Heroku)
 
         git push staging master
         heroku run python manage.py syncdb --migrate
-        heroku run python manage.py compress
 
         heroku create --remote production --region eu demarrer-production
         heroku config:set \
@@ -69,4 +68,3 @@ Deploy to staging/production (Heroku)
 
         git push production master
         heroku run python manage.py syncdb --migrate --remote production
-        heroku run python manage.py compress --remote production
