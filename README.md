@@ -68,3 +68,5 @@ Deploy to staging/production (Heroku)
 
         git push production master
         heroku run python manage.py syncdb --migrate --remote production
+
+        heroku addons:add memcachier:dev --remote production

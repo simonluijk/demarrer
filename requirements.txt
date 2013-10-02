@@ -5,6 +5,8 @@ psycopg2
 python-memcached
 python-dateutil
 dj-database-url
+django-heroku-memcacheify
+pylibmc
 
 ## Hosting with Gunicorn
 gunicorn

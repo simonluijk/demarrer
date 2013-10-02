@@ -3,6 +3,7 @@
 
 import os
 import dj_database_url
+from memcacheify import memcacheify
 
 
 DEBUG = os.environ.get('DEBUG') == 'True'
@@ -19,6 +20,7 @@ DEFAULT_FROM_EMAIL = 'demarrer@example.com'
 SERVER_EMAIL = DEFAULT_FROM_EMAIL
 
 DATABASES = {'default': dj_database_url.config()}
+CACHES = memcacheify()
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -114,13 +116,6 @@ if os.environ.get('INTERNAL_IPS'):
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 EMAIL_BACKEND = os.environ['EMAIL_BACKEND']
-
-CACHES = {
-    'default': {
-        'BACKEND': os.environ.get('DEFAULT_CACHE_BACKEND',
-                   'django.core.cache.backends.locmem.LocMemCache'),
-    },
-}
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
