@@ -63,10 +63,12 @@ Deploy to staging/production (Heroku)
             AWS_STORAGE_BUCKET_NAME=demarrer-media \
             EMAIL_BACKEND=django_ses.SESBackend \
             MEDIA_DOMAIN=???.cloudfront.net \
-            ALLOWED_HOSTS=demarrer.com \
+            ALLOWED_HOSTS=www.demarrer.com \
             --remote production
 
         git push production master
         heroku run python manage.py syncdb --migrate --remote production
 
+        heroku addons:add pgbackups --remote production
         heroku addons:add memcachier:dev --remote production
+        heroku domains:add www.demarrer.com --remote production
