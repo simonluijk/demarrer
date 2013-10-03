@@ -4,7 +4,6 @@ import re
 import boto
 
 from fabric.api import lcd, local, task, hide, prefix
-from contextlib import contextmanager
 from boto.s3.connection import Location as _Location
 from boto.exception import S3CreateError as _S3CreateError
 from boto.cloudfront.origin import CustomOrigin as _CustomOrigin
@@ -49,13 +48,6 @@ def setup_s3(bucket_name=None):
         print('MEDIA_DOMAIN={0}'.format(bucket_url))
 
 
-@contextmanager
-def virtualenv(virtualenv, local=False):
-    activate_path = os.path.join(virtualenv, 'bin', 'activate')
-    with prefix('source "{0}"'.format(activate_path)):
-        yield
-
-
 @task
 def freeze_requirements():
     """ Freeze python requirements into requirements.txt file """
@@ -63,7 +55,9 @@ def freeze_requirements():
         requirements = open('requirements.txt', 'r').read().split('\n')
         if len(requirements[-1]) == 0:
             requirements.pop()
-        with virtualenv(LOCAL_VENV, local=True):
+
+        activate_path = os.path.join(LOCAL_VENV, 'bin', 'activate')
+        with prefix('source "{0}"'.format(activate_path)):
             with hide('running'):
                 packages = local('pip freeze --local', capture=True)
                 packages = packages.split('\n')
@@ -99,13 +93,13 @@ def freeze_requirements():
 
 
 @task
-def local_venv():
+def mk_venv():
     """ Build local vitualenv """
     with lcd(PROJECT_ROOT):
         local('rm -rf "{0}"'.format(LOCAL_VENV))
-        local('virtualenv "{0}" -p python2 --no-site-packages'.format(
-            LOCAL_VENV))
-        with virtualenv(LOCAL_VENV, local=True):
+        local('virtualenv "{0}"'.format(LOCAL_VENV))
+        activate_path = os.path.join(LOCAL_VENV, 'bin', 'activate')
+        with prefix('source "{0}"'.format(activate_path)):
             local('pip install -r requirements.txt')
 
 
