@@ -30,7 +30,7 @@ def setup_s3(bucket_name=None):
     except _S3CreateError:
         pass
 
-    print 'AWS_STORAGE_BUCKET_NAME={0}'.format(bucket_name)
+    print('AWS_STORAGE_BUCKET_NAME={0}'.format(bucket_name))
 
     if CLOUDFRONT_ENABLED:
         try:
@@ -43,10 +43,10 @@ def setup_s3(bucket_name=None):
         origin = _CustomOrigin(origin, origin_protocol_policy='http-only')
         conn = boto.connect_cloudfront()
         distro = conn.create_distribution(origin=origin, enabled=True)
-        print 'MEDIA_DOMAIN={0}'.format(distro.domain_name)
+        print('MEDIA_DOMAIN={0}'.format(distro.domain_name))
     else:
         bucket_url = '{0}.s3.amazonaws.com'.format(bucket_name)
-        print 'MEDIA_DOMAIN={0}'.format(bucket_url)
+        print('MEDIA_DOMAIN={0}'.format(bucket_url))
 
 
 @contextmanager
@@ -58,7 +58,7 @@ def virtualenv(virtualenv, local=False):
 
 @task
 def freeze_requirements():
-    """ Freeze python requirements into requirements file """
+    """ Freeze python requirements into requirements.txt file """
     with lcd(PROJECT_ROOT):
         requirements = open('requirements.txt', 'r').read().split('\n')
         if len(requirements[-1]) == 0:
@@ -68,10 +68,15 @@ def freeze_requirements():
                 packages = local('pip freeze --local', capture=True)
                 packages = packages.split('\n')
 
-        first = True
         for pkg in packages:
             found_req = False
-            pkg, version = pkg.split('==')
+
+            try:
+                pkg, version = pkg.split('==')
+            except ValueError:
+                print('Ignoring:\n{0}\n'.format(pkg))
+                continue
+
             for idx, req in enumerate(requirements):
                 try:
                     req, old_version = req.split('==')
@@ -80,11 +85,13 @@ def freeze_requirements():
                 if req.lower() == pkg.lower():
                     found_req = True
                     requirements[idx] = '%s==%s' % (pkg, version)
+                    break
+
             if not found_req:
-                if first:
-                    first = False
-                    requirements.append('')
-                    requirements.append('## Pip frozen requirements')
+                msg = '## Pip frozen requirements'
+                if msg not in requirements:
+                    requirements.append('\n')
+                    requirements.append(msg)
                 requirements.append('%s==%s' % (pkg, version))
 
         req_file = open('requirements.txt', 'w')
