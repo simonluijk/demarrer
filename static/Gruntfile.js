@@ -48,12 +48,25 @@ module.exports = function(grunt) {
     less: {
       dist: {
         options: {
-          compress: true,
-          relativeUrls: true
+          compress: true
         },
         files: {
           'dist/main.min.css': 'less/main.less'
         }
+      }
+    },
+
+    copy: {
+      less: {
+        files: [
+          {
+            expand: true,
+            src: ['bower_components/bootstrap/dist/fonts/*'],
+            dest: 'img/fonts/',
+            flatten: true,
+            filter: 'isFile'
+          }
+        ]
       }
     },
 
@@ -66,13 +79,19 @@ module.exports = function(grunt) {
     watch: {
       less: {
         files: [
-          'less/*.less'
+          'less/*.less',
+          'less/*/*.less',
+          'Gruntfile.js'
         ],
-        tasks: ['less']
+        tasks: [
+          'less',
+          'copy'
+        ]
       },
       coffee: {
         files: [
-          'coffee/*.coffee'
+          'coffee/*.coffee',
+          'Gruntfile.js'
         ],
         tasks: [
           'coffee',
@@ -90,6 +109,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-watch');
   grunt.loadNpmTasks('grunt-contrib-clean');
+  grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-concat-sourcemap');
 
   grunt.registerTask('default', ['build']);
@@ -98,6 +118,7 @@ module.exports = function(grunt) {
     'concat_sourcemap',
     'uglify',
     'less',
+    'copy',
     'clean'
   ]);
 
