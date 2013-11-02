@@ -19,7 +19,7 @@ LOCAL_VENV = '$WORKON_HOME/%s' % PROJECT_NAME
 
 @task
 def setup_s3(bucket_name=None):
-    """ Setup s3 instance with cloudfront distribution """
+    """ Setup s3 instance with cloudfront distribution. """
     if not bucket_name:
         bucket_name = '{0}-media'.format(PROJECT_NAME)
     conn = boto.connect_s3()
@@ -50,7 +50,7 @@ def setup_s3(bucket_name=None):
 
 @task
 def freeze_requirements():
-    """ Freeze python requirements into requirements.txt file """
+    """ Freeze python requirements into requirements.txt file. """
     with lcd(PROJECT_ROOT):
         requirements = open('requirements.txt', 'r').read().split('\n')
         if len(requirements[-1]) == 0:
@@ -94,7 +94,7 @@ def freeze_requirements():
 
 @task
 def build_venv():
-    """ Build local vitualenv """
+    """ Build local vitualenv. """
     with lcd(PROJECT_ROOT):
         local('rm -rf "{0}"'.format(LOCAL_VENV))
         local('virtualenv "{0}"'.format(LOCAL_VENV))
